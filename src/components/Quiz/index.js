@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import API from '../../api';
+// import * as math from '../../utils/math';
 
 function App() {
 	const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ function App() {
 
 				return {
 					...q,
-					answers: q.incorrect_answers,
+					choices: q.incorrect_answers,
 				};
 			});
 
@@ -46,7 +47,7 @@ function App() {
 	}, [url]);
 
 	const startTestHandler = () => {
-		if (quizNumber.trim('').length === 0) {
+		if (quizNumber.trim('').length === 0 || quizNumber === '0') {
 			alert('Please input number of questions');
 		} else {
 			setUrl(
@@ -135,6 +136,11 @@ function App() {
 							{data.map(item => (
 								<li key={item.questionId}>
 									<p>{item.question}</p>
+									<ul>
+										{item.choices.map(ans => {
+											return <li key={ans}>{ans}</li>;
+										})}
+									</ul>
 								</li>
 							))}
 
