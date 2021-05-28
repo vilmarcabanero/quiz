@@ -6,7 +6,7 @@ function App() {
 	const [data, setData] = useState([]);
 	const [chapter, setChapter] = useState(151);
 	const [url, setUrl] = useState(
-		'quiz/questions?amount=1&chapter=151&difficulty=10'
+		'quiz/questions/random?amount=1&chapter=151&difficulty=10'
 	);
 	const [isLoading, setIsLoading] = useState(false);
 	const [quizNumber, setQuizNumber] = useState('');
@@ -136,11 +136,34 @@ function App() {
 							{data.map(item => (
 								<li key={item.questionId}>
 									<p>{item.question}</p>
-									<ul>
-										{item.choices.map(ans => {
-											return <li key={ans}>{ans}</li>;
-										})}
-									</ul>
+									<input
+										type='radio'
+										value={item.choices[0]}
+										name={item.questionId}
+									/>
+									<label>{item.choices[0]}</label>
+									<br />
+									<input
+										type='radio'
+										value={item.choices[1]}
+										name={item.questionId}
+									/>
+									<label>{item.choices[1]}</label>
+									<br />
+									<input
+										type='radio'
+										value={item.choices[2]}
+										name={item.questionId}
+									/>
+									<label>{item.choices[2]}</label>
+									<br />
+									<input
+										type='radio'
+										value={item.choices[3]}
+										name={item.questionId}
+									/>
+									<label>{item.choices[3]}</label>
+									<br />
 								</li>
 							))}
 
