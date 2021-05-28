@@ -1,10 +1,11 @@
 
 import './App.css';
+import QuizPage from './pages/QuizPage'
 
 function App() {
   return (
     <div>
-      Hello
+      <QuizPage />
     </div>
   );
 }
