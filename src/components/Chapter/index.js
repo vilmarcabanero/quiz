@@ -4,6 +4,7 @@ import API from '../../api';
 
 function App() {
 	const [data, setData] = useState([]);
+	const [categoryData, setCategoryData] = useState([]);
 	const [chapter, setChapter] = useState(151);
 	const [isLoading, setIsLoading] = useState(false);
 	const [quizNumber, setQuizNumber] = useState('');
@@ -52,8 +53,13 @@ function App() {
 
 	useEffect(() => {
 		const fetchCategory = async () => {
+			setIsLoading(true);
 			const result = await API(urlCategory);
+
+			setCategoryData(result.data);
+			setIsLoading(false);
 			console.log(result.data);
+			// console.log(chapter);
 		};
 
 		fetchCategory();
@@ -62,6 +68,8 @@ function App() {
 	const chooseCategoryHandler = () => {
 		setUrlCategory(`quiz/categories?subject=${category}`);
 		setHasChosenCategory(true);
+		console.log(categoryData);
+		console.log(category);
 	};
 
 	const selectCategoryHandler = e => {
@@ -127,11 +135,11 @@ function App() {
 							<div>
 								<label>Select Chapter</label> <br />
 								<select value={chapter} onChange={selectChapterHandler}>
+									{/* {categoryData} */}
 									<option value={151}>Present Economy</option>
 									<option value={152}>Simple Interest and Discount</option>
 									<option value={153}>Compound Interest</option>
 									<option value={154}>Annuity</option>
-									<option value={111}>Algebra Chapter 1</option>
 								</select>
 							</div>
 							<br />
