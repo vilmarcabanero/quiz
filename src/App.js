@@ -1,11 +1,11 @@
 
 import './App.css';
-import QuizPage from './pages/QuizPage'
+import SubjectPage from './pages/SubjectPage'
 
 function App() {
   return (
     <div>
-      <QuizPage />
+      <SubjectPage />
     </div>
   );
 }
